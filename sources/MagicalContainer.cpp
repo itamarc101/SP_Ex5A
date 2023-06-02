@@ -1,4 +1,5 @@
 #include "MagicalContainer.hpp"
+using namespace ariel;
 
 void MagicalContainer::addElement(int elem)
 {
@@ -12,6 +13,6 @@ void MagicalContainer::removeElement(int elem)
 
 }
 
-int MagicalContainer::size() const{
+size_t MagicalContainer::size() const{
     return elements.size();
 }
