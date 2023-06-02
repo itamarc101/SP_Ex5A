@@ -1,6 +1,7 @@
 #include "MagicalContainer.hpp"
 #include <vector>
 #include <stdexcept>
+using namespace ariel;
 
 MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator=(const AscendingIterator& other)
 {
@@ -24,13 +25,11 @@ bool MagicalContainer::AscendingIterator::operator!=(const AscendingIterator& ot
 
 bool MagicalContainer::AscendingIterator::operator<(const AscendingIterator& other) const
 {
-    //if(&container != &other.container) throw std::runtime_error("Cant comape from different containers");
     return index < other.index;
 }
 
 bool MagicalContainer::AscendingIterator::operator>(const AscendingIterator& other) const
 {
-    //if(&container != &other.container) throw std::runtime_error("Cant comape from different containers");
     return index > other.index;
 }
 
