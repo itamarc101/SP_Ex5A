@@ -6,7 +6,6 @@
 namespace ariel
 {
 }
-
     class MagicalContainer 
     {
         private:
@@ -16,7 +15,7 @@ namespace ariel
         public:
             void addElement(int elem);
             void removeElement(int elem);
-            int size() const;
+            size_t size() const;
 
             MagicalContainer() {}
 
@@ -24,11 +23,15 @@ namespace ariel
             {
                 private:
                     MagicalContainer& container;
-                    int index;
+                    size_t index;
                 public:
                     AscendingIterator(MagicalContainer& container): container(container), index(0) {}
+                    AscendingIterator(MagicalContainer& container, size_t index): container(container), index(index) {}
                     AscendingIterator(AscendingIterator& other): container(other.container), index(other.index) {}
                     ~AscendingIterator() = default;
+
+                    AscendingIterator(AscendingIterator&&) noexcept;
+                    AscendingIterator& operator=(AscendingIterator&&) noexcept;
 
                     AscendingIterator& operator=(const AscendingIterator& other);
                     bool operator==(const AscendingIterator& other) const;
@@ -46,13 +49,19 @@ namespace ariel
             {
                 private:
                     MagicalContainer& container;
-                    int index;
-                    //bool isPrime(int num);
+                    size_t index;
 
                 public:
                     PrimeIterator(MagicalContainer& container): container(container), index(0) {}  
+                    PrimeIterator(MagicalContainer& container, size_t index): container(container), index(index) {}
                     PrimeIterator(const PrimeIterator& other): container(other.container), index(other.index) {}
                     ~PrimeIterator() = default;
+
+                    PrimeIterator(PrimeIterator&&) noexcept;
+                    PrimeIterator& operator=(PrimeIterator&&) noexcept;
+
+
+                    bool isPrime(int num);
 
                     PrimeIterator begin();
                     PrimeIterator end();
@@ -70,12 +79,18 @@ namespace ariel
             {
                 private:
                     MagicalContainer& container;
-                    int index;
+                    size_t index;
 
                 public:
                     SideCrossIterator(MagicalContainer& container): container(container), index(0) {} 
+                    SideCrossIterator(MagicalContainer& container, size_t index): container(container), index(index) {}
                     SideCrossIterator(const SideCrossIterator& other): container(other.container), index(other.index) {}
                     ~SideCrossIterator() = default;
+
+                    SideCrossIterator(SideCrossIterator&&) noexcept;
+                    SideCrossIterator& operator=(SideCrossIterator&&) noexcept;
+
+
                     SideCrossIterator begin();
                     SideCrossIterator end();
 
@@ -86,8 +101,5 @@ namespace ariel
                     bool operator<(const SideCrossIterator& other) const;
                     int operator*();
                     SideCrossIterator& operator++();
-                
-                private:
-                   //bool isPrime(int numb);
             };
     };
