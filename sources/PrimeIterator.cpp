@@ -1,4 +1,16 @@
 #include "MagicalContainer.hpp"
+using namespace ariel;
+
+bool MagicalContainer::PrimeIterator::isPrime(int num)
+{
+    if(num < 2) return false;
+    
+    for(int i = 2; i*i < num; i++)
+    {
+        if(num % i == 0) return false;
+    }
+    return true;
+}
 
 MagicalContainer::PrimeIterator& MagicalContainer::PrimeIterator::operator=(const PrimeIterator& other)
 {
@@ -22,13 +34,11 @@ bool MagicalContainer::PrimeIterator::operator!=(const PrimeIterator& other) con
 
 bool MagicalContainer::PrimeIterator::operator<(const PrimeIterator& other) const
 {
-    //if(&container != &other.container) throw std::runtime_error("Cant comape from different containers");
     return index < other.index;
 }
 
 bool MagicalContainer::PrimeIterator::operator>(const PrimeIterator& other) const
 {
-    //if(&container != &other.container) throw std::runtime_error("Cant comape from different containers");
     return index > other.index;
 }
 
