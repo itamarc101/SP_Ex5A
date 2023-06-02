@@ -1,4 +1,5 @@
 #include "MagicalContainer.hpp"
+using namespace ariel;
 
 MagicalContainer::SideCrossIterator& MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator& other)
 {
